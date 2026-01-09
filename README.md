@@ -72,8 +72,11 @@ Player potential exhibits a stronger relationship with market value than physica
 
 Results
 Variable |	Spearman ρ	| p-value
+
 Potential|	0.776	< 0.001
+
 Physic|	0.412	< 0.001
+
 BMI	|0.092	< 0.001
 
 Results indicate that player potential has the strongest and most statistically significant relationship with market value, while physic shows a moderate association and BMI a weak association.
@@ -95,8 +98,13 @@ K-Nearest Neighbors (KNN) Regression with K = 5
 
 ####Model Performance
 Model|	MAE (€)|	RMSE (€)|	R²
+
 Linear Regression| 228,409|	468,423|	0.386
+
 KNN (k=5)|	16,717|	153,781|	0.9995
+
+
+
 ####Interpretation
 
 Linear Regression captures global trends but struggles due to the highly skewed distribution of market values.
@@ -127,12 +135,12 @@ SciPy
 
 
 
-AI Usage Disclosure
+####AI Usage Disclosure
 
 AI assistance (ChatGPT) was used for debugging, workflow structuring, and improving documentation clarity.
 All analysis decisions, code execution, and interpretations were reviewed and verified by the author.
 
-Conclusion
+####Conclusion
 
 This project demonstrates that player potential is the dominant driver of market value within FIFA 23 data.
 By combining exploratory analysis, statistical hypothesis testing, and machine learning models, the study provides a data-driven view of football player valuation.
