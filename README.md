@@ -1,101 +1,143 @@
-# **Analyzing Economic and Physical Patterns in Football Players Using FIFA, Football Manager, and Transfermarkt Data**
+Analyzing Economic and Physical Patterns in Football Players Using FIFA 23 Data
 
----
 
-## **Introduction**
+Introduction
 
-This project explores how **player attributes and market values** reflect economic and physical patterns in modern football.
-By combining data from **FIFA**, **Football Manager (FM)**, and **Transfermarkt**, the study investigates how measurable factors — *age, height, weight, potential, and market value* — relate to each other, and how player profiles have evolved in the football market.
+This project investigates how player attributes and physical characteristics relate to market value in professional football using the FIFA 23 Complete Player Dataset.
+Player market value reflects a complex economic mechanism driven by performance ratings, physical traits, and expectations of future success.
+The goal of this study is to analyze these relationships through exploratory data analysis, statistical hypothesis testing, and supervised machine learning.
 
-Rather than verifying FIFA data, the goal is to use these datasets together to understand **how physical attributes and potential influence market value and player economics.**
+Although multiple public datasets (Football Manager and Transfermarkt) were initially considered for enrichment, inconsistencies in player naming conventions prevented reliable merging within the project timeline.
+Therefore, the final analysis focuses on a single, rich dataset (FIFA 23), emphasizing methodological depth rather than dataset quantity.
 
----
 
-## **Motivation**
+Motivation
 
-Football’s transfer market has become one of the most dynamic economic systems in sports. Clubs invest based on potential, physical strength, and perceived market value, often influenced by analytical tools.
-The motivation behind this project is to analyze whether physical characteristics (height, weight) and player potential have measurable impacts on market value, using **publicly available player databases**.
+Football transfers involve substantial financial investments influenced by player ratings, physical profiles, and future performance expectations.
+Understanding how these measurable characteristics relate to market value provides insight into the economic logic behind player valuation.
+This project aims to determine which attributes are most strongly associated with market value and how effectively they can predict it.
 
----
 
-## **Objectives**
+Objectives
 
-a) Examine the relationship between **physical characteristics** (height, weight) and **market value**.
-b) Study how **potential** (FIFA and FM) correlates with **market value** (Transfermarkt).
-c) Identify whether physical or potential attributes are stronger predictors of a player’s market worth.
-d) Combine multiple open datasets to analyze consistent economic patterns in player valuation.
+Examine the relationship between player attributes and market value
 
----
+Compare the strength of association between potential, physic, and BMI with market value
 
-## **Datasets and Sources**
+Statistically test which attributes are most strongly related to market value
 
-| Dataset                                       | Description                                                       | Source                                                                                                                                                                             |
-| --------------------------------------------- | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **FIFA 19–23 Complete Player Dataset**        | Player attributes: potential, value, wage, physic, height, weight | [https://www.kaggle.com/datasets/stefanoleone992/fifa-23-complete-player-dataset](https://www.kaggle.com/datasets/stefanoleone992/fifa-23-complete-player-dataset)                 |
-| **Football Manager 2021 Player Database**     | Player info: potential ability, value, wage, age                  | [https://www.kaggle.com/datasets/rhugon/football-manager-database](https://www.kaggle.com/datasets/rhugon/football-manager-database)                                               |
-| **Transfermarkt Market Value Data**           | Height, weight, age, and market value (€)                         | [https://www.kaggle.com/datasets/akarshsinghh/football-players-market-value-prediction](https://www.kaggle.com/datasets/akarshsinghh/football-players-market-value-prediction)     |
-| **Top 5 Leagues Player Phys Data (Optional)** | Physical metrics for extra validation                             | [https://www.kaggle.com/datasets/diegobartoli/top5legauesplayers-statsandphys](https://www.kaggle.com/datasets/diegobartoli/top5legauesplayers-statsandphys)                       |
-| **PES 2019 Players Dataset**                  | Independent player ratings for comparison                         | [https://www.kaggle.com/datasets/harshkava/pro-evolution-soccer-pes-2019-players-dataset](https://www.kaggle.com/datasets/harshkava/pro-evolution-soccer-pes-2019-players-dataset) |
+Apply supervised machine learning models to predict player market value
 
-All datasets are public and used for educational and analytical purposes only.
+Interpret results from both statistical and machine learning perspectives
 
----
 
-## **Methods**
+Dataset and Source
+Dataset	Description	Source
+FIFA 23 Complete Player Dataset	Player attributes including age, height, weight, overall, potential, physic, and market value	https://www.kaggle.com/datasets/stefanoleone992/fifa-23-complete-player-dataset
 
-### **Data Cleaning**
 
-* Keep only numeric, measurable variables (`age`, `height`, `weight`, `potential`, `physic`, `market_value_eur`).
-* Remove all match or event-based metrics (goals, assists, tackles, xG).
-* Normalize units: height (cm), weight (kg), and convert all currencies to euros.
+Data Preparation and Feature Engineering
 
-### **Variable Relationships**
+The dataset was cleaned by removing missing values and invalid physical measurements.
+Only numeric and measurable attributes were retained.
 
-| Variable 1                       | Variable 2    | Expected Relationship                                                 |
-| -------------------------------- | ------------- | --------------------------------------------------------------------- |
-| Height × Weight (Physical Index) | Market Value  | Positive correlation — physically strong players often valued higher. |
-| Potential (FIFA)                 | Market Value  | Positive — young players with high potential are valued more.         |
-| Potential (FM)                   | Market Value  | Positive — consistent across independent systems.                     |
-| Physic (FIFA)                    | Height/Weight | Moderate — higher Physic corresponds with bigger body metrics.        |
+To enrich the dataset, additional features were engineered:
 
-### **Analysis Steps**
+Physical Index = height × weight
 
-1. Merge datasets by player name and position where possible.
-2. Compute correlation coefficients between the key variables.
-3. Visualize:
+Body Mass Index (BMI) = weight / height²
 
-   * Scatter plots (Potential vs Market Value, Physical Index vs Market Value).
-   * Heatmap for correlation matrix.
-4. Interpret whether market value aligns more strongly with **potential** or **physical** traits.
+These features allow analysis beyond raw attributes and support deeper economic interpretation.
 
----
 
-## **Findings (Expected)**
+Exploratory Data Analysis (EDA)
 
-* **Potential** (both FIFA and FM) shows a strong positive correlation with market value, confirming that expected growth drives investment.
-* **Physical metrics** (height, weight) have a smaller but notable effect — especially for defenders and forwards.
-* **Economic insight:** Market value appears to be shaped by a combination of potential and physicality, reflecting modern football’s emphasis on athleticism and projection.
+EDA was conducted using:
 
----
+Histograms to examine variable distributions
 
-## **Limitations**
+Scatter plots to explore relationships between player attributes and market value
 
-* Players missing across datasets limit exact merges.
-* Rating systems (FIFA vs FM) use different scales requiring normalization.
-* Market values from Transfermarkt fluctuate over time and reflect subjective estimation.
+A correlation heatmap to identify linear associations
 
----
+EDA reveals highly skewed market value distributions, strong non-linear relationships with rating-based variables, and substantial outliers among high-value players.
 
-## **Tools and Technologies**
+Hypothesis Testing
+Comparative Hypothesis Testing
 
-* **Python:** Pandas, NumPy, Seaborn, Matplotlib
-* **Statsmodels:** for correlation and regression
-* **Excel / Power BI:** for visualization and summary statistics
+To determine which player attributes are most strongly associated with market value, a comparative hypothesis testing framework was applied using Spearman correlation analysis, which is robust to skewness and outliers.
 
----
+Hypothesis:
+Player potential exhibits a stronger relationship with market value than physical attributes such as physic rating and BMI.
 
-## **Conclusion**
+Results
+Variable |	Spearman ρ	| p-value
+Potential|	0.776	< 0.001
+Physic|	0.412	< 0.001
+BMI	|0.092	< 0.001
 
-This study combines FIFA, Football Manager, and Transfermarkt data to uncover how **physical attributes and potential ability influence market value in professional football.**
-Findings indicate that potential is the most dominant factor in valuation, while physical characteristics reinforce worth in specific positions.
-By integrating multiple data sources, the project provides a data-driven view of how football’s economic logic links talent, physique, and value.
+Results indicate that player potential has the strongest and most statistically significant relationship with market value, while physic shows a moderate association and BMI a weak association.
+This suggests that football player valuation is driven primarily by expectations of future performance rather than raw physical characteristics.
+
+
+
+Machine Learning
+Model Setup
+
+A supervised learning approach was applied to predict player market value.
+The dataset was split into training and testing sets using an 80/20 split, and features were standardized.
+
+Models Applied
+
+Linear Regression (baseline, interpretable model)
+
+K-Nearest Neighbors (KNN) Regression with K = 5
+
+Model Performance
+Model|	MAE (€)|	RMSE (€)|	R²
+Linear Regression| 228,409|	468,423|	0.386
+KNN (k=5)|	16,717|	153,781|	0.9995
+Interpretation
+
+Linear Regression captures global trends but struggles due to the highly skewed distribution of market values.
+KNN achieves extremely high performance by exploiting local similarity between players, indicating strong memorization effects.
+While effective within the dataset, KNN’s generalization ability beyond this data may be limited.
+
+Limitations and Future Work
+
+The analysis relies on a single dataset, which may reflect FIFA’s internal valuation logic.
+
+Market value is influenced by external factors not captured in the dataset (league popularity, contracts, media exposure).
+
+Future work may include integrating Transfermarkt or Football Manager data using improved name-matching techniques.
+
+Additional validation using alternative seasons or cross-validation methods could improve robustness
+
+Tools and Technologies
+
+Python
+
+Pandas, NumPy
+
+Matplotlib, Seaborn
+
+Scikit-learn
+
+SciPy
+
+
+
+AI Usage Disclosure
+
+AI assistance (ChatGPT) was used for debugging, workflow structuring, and improving documentation clarity.
+All analysis decisions, code execution, and interpretations were reviewed and verified by the author.
+
+Conclusion
+
+This project demonstrates that player potential is the dominant driver of market value within FIFA 23 data.
+By combining exploratory analysis, statistical hypothesis testing, and machine learning models, the study provides a data-driven view of football player valuation.
+The results highlight the importance of future performance expectations over raw physical characteristics in determining market value.
+
+
+
+
