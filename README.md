@@ -1,7 +1,7 @@
-Analyzing Economic and Physical Patterns in Football Players Using FIFA 23 Data
+####Analyzing Economic and Physical Patterns in Football Players Using FIFA 23 Data
 
 
-Introduction
+####Introduction
 
 This project investigates how player attributes and physical characteristics relate to market value in professional football using the FIFA 23 Complete Player Dataset.
 Player market value reflects a complex economic mechanism driven by performance ratings, physical traits, and expectations of future success.
@@ -11,14 +11,14 @@ Although multiple public datasets (Football Manager and Transfermarkt) were init
 Therefore, the final analysis focuses on a single, rich dataset (FIFA 23), emphasizing methodological depth rather than dataset quantity.
 
 
-Motivation
+####Motivation
 
 Football transfers involve substantial financial investments influenced by player ratings, physical profiles, and future performance expectations.
 Understanding how these measurable characteristics relate to market value provides insight into the economic logic behind player valuation.
 This project aims to determine which attributes are most strongly associated with market value and how effectively they can predict it.
 
 
-Objectives
+####Objectives
 
 Examine the relationship between player attributes and market value
 
@@ -31,12 +31,12 @@ Apply supervised machine learning models to predict player market value
 Interpret results from both statistical and machine learning perspectives
 
 
-Dataset and Source
+####Dataset and Source
 Dataset	Description	Source
 FIFA 23 Complete Player Dataset	Player attributes including age, height, weight, overall, potential, physic, and market value	https://www.kaggle.com/datasets/stefanoleone992/fifa-23-complete-player-dataset
 
 
-Data Preparation and Feature Engineering
+####Data Preparation and Feature Engineering
 
 The dataset was cleaned by removing missing values and invalid physical measurements.
 Only numeric and measurable attributes were retained.
@@ -50,7 +50,7 @@ Body Mass Index (BMI) = weight / height²
 These features allow analysis beyond raw attributes and support deeper economic interpretation.
 
 
-Exploratory Data Analysis (EDA)
+####Exploratory Data Analysis (EDA)
 
 EDA was conducted using:
 
@@ -62,7 +62,7 @@ A correlation heatmap to identify linear associations
 
 EDA reveals highly skewed market value distributions, strong non-linear relationships with rating-based variables, and substantial outliers among high-value players.
 
-Hypothesis Testing
+####Hypothesis Testing
 Comparative Hypothesis Testing
 
 To determine which player attributes are most strongly associated with market value, a comparative hypothesis testing framework was applied using Spearman correlation analysis, which is robust to skewness and outliers.
@@ -81,7 +81,7 @@ This suggests that football player valuation is driven primarily by expectations
 
 
 
-Machine Learning
+####Machine Learning
 Model Setup
 
 A supervised learning approach was applied to predict player market value.
@@ -93,17 +93,17 @@ Linear Regression (baseline, interpretable model)
 
 K-Nearest Neighbors (KNN) Regression with K = 5
 
-Model Performance
+####Model Performance
 Model|	MAE (€)|	RMSE (€)|	R²
 Linear Regression| 228,409|	468,423|	0.386
 KNN (k=5)|	16,717|	153,781|	0.9995
-Interpretation
+####Interpretation
 
 Linear Regression captures global trends but struggles due to the highly skewed distribution of market values.
 KNN achieves extremely high performance by exploiting local similarity between players, indicating strong memorization effects.
 While effective within the dataset, KNN’s generalization ability beyond this data may be limited.
 
-Limitations and Future Work
+####Limitations and Future Work
 
 The analysis relies on a single dataset, which may reflect FIFA’s internal valuation logic.
 
